@@ -64,7 +64,7 @@ int main(){
 
 
     // Working with random numbers
-    std::srand(time(0));
+    std::srand(time(0));   // Seeding the RNG
     num = rand() % 10 + 1; // Random number 1-10
 
 
