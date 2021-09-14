@@ -291,3 +291,7 @@ TSWLatexianTemp*
 *.exe
 *.out
 *.app
+
+
+# Ignore Provided Files
+Provided
