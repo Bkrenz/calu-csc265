@@ -13,10 +13,11 @@
 #include <string>
 #include <regex>
 
+#include "clock.h"
 
 using namespace std;
 
-string getValidInput();
+string getValidInputTime();
 
 int main()
 {
@@ -25,16 +26,16 @@ int main()
     int menuInput = 0;
 
     // Instantiate the Clock
-    // Clock clock = Clock(); // Initial value: 12:00 am
+    Clock clock = Clock(); // Initial value: 12:00 am
 
     // Display welcome message
-    cout << "Welcome to the Clock command line interface.\n\n";
+    cout << "Welcome to the Clock interface.";
 
     // While the system should continue running
     while(continueMenu)
     {
         // Display the Menu
-        cout << endl;
+        cout << endl << endl;
         cout << "1. Set the Time" << endl;
         cout << "2. Display the Time" << endl;
         cout << "3. Advance one hour" << endl;
@@ -54,19 +55,21 @@ int main()
         switch(menuInput) 
         {
             case 1: // Set the time
-                // clock.setTime(getValidInputTime());
+                clock.set(getValidInputTime());
                 break;
 
             case 2: // Display the time
-                // clock.displayTime();
+                cout << endl << "The current time is: ";
+                clock.display();
+                cout << endl;
                 break;
 
             case 3: // Increment the hour
-                // clock.incrementHour();
+                clock.incrementHour();
                 break;
             
             case 4: // Increment the minute
-                // clock.incrementMinute();
+                clock.incrementMin();
                 break;
 
             case 5: // Quit
@@ -79,7 +82,7 @@ int main()
     }
 
     // Quit the program
-    cout << "Thank you, come again!";
+    cout << endl <<"Thank you, come again!" << endl;
     return 0;
 
 }
