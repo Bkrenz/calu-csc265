@@ -22,15 +22,15 @@
 //     Precondition:	value is either 'am' or 'pm'
 //     Postcondition:	meridian of the clock has been set to value
 //
-//   void sethour(const int value)
-//     Description:		set the hour of the clock
-//     Precondition:	value is a non-negative value
-//     Postcondition:	hour of the clock has been set to value
+//   void incrementHour()
+//     Description:		increment the hour of the clock
+//     Precondition:	
+//     Postcondition:	hour of the clock has been incremented
 //
-//   void setmin (const int value)
-//     Description:		set the min of the clock
-//     Precondition:	value is a non-negative value
-//     Postcondition:	min of the clock has been set to value
+//   void incrementMinute()
+//     Description:		increment the min of the clock
+//     Precondition:	
+//     Postcondition:	min of the clock has been incremented
 
 //
 // CONSTANT MEMBER FUNCTIONS for the Fraction class

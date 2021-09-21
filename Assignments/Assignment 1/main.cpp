@@ -87,6 +87,7 @@ int main()
 
 }
 
+
 /**
  * validateInputTime()
  * 
@@ -107,6 +108,7 @@ bool validateInputTime(string  input){
 
     return regex_match(input, regex(TIME_REGEX));
 }
+
 
 /**
  * getValidInput()
