@@ -14,6 +14,8 @@
 
 using namespace std;
 
+int getInputValue();
+
 int main(){
 
     // Init
@@ -35,7 +37,7 @@ int main(){
     }
 
     // Init the Set or List
-    List l;
+    List l; // technically I'm using polymorphism here...
     if (menuInput == 1)
         l = List();
     else if (menuInput == 2)
@@ -65,15 +67,19 @@ int main(){
         switch(menuInput) 
         {
             case 1: // Insert a Value
+                l.insert(getInputValue());
                 break;
 
             case 2: // Remove a Value
+                l.remove(getInputValue());
                 break;
 
             case 3: // Print the List
+                l.printList();
                 break;
 
             case 4: // Quit
+                continueMenu = false;
                 break;
 
             default: // Error in input
@@ -84,4 +90,12 @@ int main(){
     // Quit the program
     cout << endl <<"Thank you, come again!" << endl;
     return 0;
+}
+
+
+int getInputValue(){
+    int value = 0;
+
+
+    return value;
 }
