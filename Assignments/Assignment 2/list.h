@@ -15,6 +15,7 @@ class List {
 
     public:
         List();
+        ~List();
         void insert(const int data);
         void remove(const int data);
         void printList() const;

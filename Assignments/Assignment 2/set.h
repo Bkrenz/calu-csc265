@@ -16,8 +16,10 @@
 class Set : public List {
 
     public:
+        Set();
+        ~Set();
         void insert(int data);
 
-}
+};
 
 #endif
