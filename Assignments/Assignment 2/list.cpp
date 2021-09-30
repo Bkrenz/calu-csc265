@@ -27,9 +27,26 @@ List::~List(){
 void List::insert(int data){
 
     // Check if the array is full and needs to be expanded
-        // Resize the array by adding 2 to the size
+    if ( this->arrayLength == this->arraySize )
+    {
+        // Incraese the size by 2
+        this->arraySize += 2;
+
+        // Create a new array and copy values
+        int* newArray = new int[this->arraySize];
+        for (int i = 0; i < this->arrayLength; i++)
+            newArray[i] = this->array[i];
+
+        // Delete the old array
+        delete [] this->array;
+
+        // Set to new array
+        this->array = newArray;
+    }
 
     // Add the data to the List
+    this->array[ this->arrayLength ] = data;
+    this->arrayLength++;
 
 }
 
@@ -49,11 +66,6 @@ void List::printList() const{
         // Print the element
         // Print an endl;
 
-}
-
-
-int* List::getListArrayPointer() const{
-    return this->array;
 }
 
 

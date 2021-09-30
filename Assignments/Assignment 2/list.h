@@ -22,11 +22,11 @@ class List {
         int getLength() const;
 
     private:
-        int* array;
         int arrayLength;
+        int arraySize;
 
     protected:
-        int* getListArrayPointer() const;
+        int* array;
 
 };
 
