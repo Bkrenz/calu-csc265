@@ -23,6 +23,9 @@ class List {
     private:
         int* array;
 
+    protected:
+        int* getListArrayPointer() const;
+
 };
 
 #endif

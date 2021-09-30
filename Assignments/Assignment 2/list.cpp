@@ -10,10 +10,16 @@
 
 #include "list.h"
 
-List::List() 
-{
+
+List::List() {
     // Initialize the array to size 2
 }
+
+
+List::~List(){
+    // Delete the array
+}
+
 
 void List::insert(int data){
 
@@ -24,6 +30,7 @@ void List::insert(int data){
 
 }
 
+
 void List::remove(int data){
 
     // Check if the data is in the list
@@ -32,6 +39,7 @@ void List::remove(int data){
 
 }
 
+
 void List::printList() const{
 
     // For each element in the array
@@ -39,3 +47,10 @@ void List::printList() const{
         // Print an endl;
 
 }
+
+
+int* List::getListArrayPointer() const{
+    return this->array;
+}
+
+

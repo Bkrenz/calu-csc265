@@ -36,15 +36,11 @@ int main(){
         cin.ignore(30000, '\n');            
     }
 
-    // Init the Set or List
-    List l; // technically I'm using polymorphism here...
-    if (menuInput == 1)
-        l = List();
-    else if (menuInput == 2)
-        l = Set();
+    // Init the List
+    // If input is 1, use a List, otherwise it's 2 and use a Set
+    List numList = menuInput == 1 ? List() : Set();
 
     // While the system should continue running
-    menuInput = 0;
     while(continueMenu)
     {
         // Display the Menu
@@ -55,7 +51,7 @@ int main(){
         cout << "4. Quit" << endl;
 
         // Get the Input
-        cout << "Please make a selection from the menu: ";
+        cout << "\nPlease make a selection from the menu: ";
         while(!(cin >> menuInput) || cin.peek() != '\n' && menuInput > 0 && menuInput < 5)
         {
             cout << "Please make a selection from the menu: ";
@@ -67,15 +63,15 @@ int main(){
         switch(menuInput) 
         {
             case 1: // Insert a Value
-                l.insert(getInputValue());
+                numList.insert(getInputValue());
                 break;
 
             case 2: // Remove a Value
-                l.remove(getInputValue());
+                numList.remove(getInputValue());
                 break;
 
             case 3: // Print the List
-                l.printList();
+                numList.printList();
                 break;
 
             case 4: // Quit
