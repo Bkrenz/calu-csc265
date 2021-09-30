@@ -19,9 +19,11 @@ class List {
         void insert(const int data);
         void remove(const int data);
         void printList() const;
+        int getLength() const;
 
     private:
         int* array;
+        int arrayLength;
 
     protected:
         int* getListArrayPointer() const;

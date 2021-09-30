@@ -56,7 +56,7 @@ int main(){
         {
             cout << "Please make a selection from the menu: ";
             cin.clear();
-            cin.ignore(30000, '\n');            
+            cin.ignore(30000, '\n');
         }
 
         // Process Input

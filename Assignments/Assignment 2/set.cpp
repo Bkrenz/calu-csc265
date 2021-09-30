@@ -10,6 +10,10 @@
 
 #include "set.h"
 
+Set::Set(){
+    
+}
+
 void Set::insert(int data) {
 
     // Check if the data already exists

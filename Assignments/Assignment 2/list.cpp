@@ -13,11 +13,14 @@
 
 List::List() {
     // Initialize the array to size 2
+    array = new int[2];
+    arrayLength = 2;
 }
 
 
 List::~List(){
     // Delete the array
+    delete [] array;
 }
 
 
