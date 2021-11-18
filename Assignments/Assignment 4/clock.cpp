@@ -131,53 +131,70 @@ void Clock::swapMeridian()
 }
 
 
-bool Clock::operator<(const Clock c2)
+bool Clock::operator<(const Clock& c2)
 {
-    return (this->meridian[0] < c2.getMeridian()[0]) 
-        || (this->meridian[0] < c2.getMeridian()[0] && (this->hour < c2.getHour() 
-            || (this->hour == c2.getHour() && this->min < c2.getMin() )));
+  if ( this->meridian[0] < c2.getMeridian()[0] )
+    return true;
+
+  else if ( this->meridian[0] > c2.getMeridian()[0] )
+    return false;
+
+  else {
+
+    if (this->hour < c2.getHour())
+      return true;
+
+    else if (this->hour > c2.getHour())
+      return false;
+
+    else {
+
+      return this->min < c2.getMin();
+
+    }
+
+  }
 }
 
-bool Clock::operator==(const Clock c2)
+bool Clock::operator==(const Clock& c2)
 {
     return (this->meridian[0] == c2.getMeridian()[0] && this->hour == c2.getHour() && this->min == c2.getMin());
 }
 
-bool Clock::operator<=(const Clock c2)
+bool Clock::operator<=(const Clock& c2)
 {
     return *this < c2 || *this == c2;
 }
 
-bool Clock::operator!=(const Clock c2)
+bool Clock::operator!=(const Clock& c2)
 {
     return !(*this == c2);
 }
 
-bool Clock::operator>=(const Clock c2)
+bool Clock::operator>=(const Clock& c2)
 {
     return !(*this < c2);
 }
 
-bool Clock::operator>(const Clock c2)
+bool Clock::operator>(const Clock& c2)
 {
     return !(*this <= c2);
 }
 
-Clock Clock::operator+(const int minutes)
+Clock operator+(const Clock& clock, const int minutes)
 {
     Clock newClock;
 
-    newClock.hour = this->hour;
-    newClock.meridian = this->meridian;
-    newClock.min = this->min + minutes;
+    newClock.hour = clock.getHour();
+    newClock.meridian = clock.getMeridian();
+    newClock.min = clock.getMin() + minutes;
 
     while(newClock.min > 60)
     {
         newClock.hour++;
         if(newClock.hour==12)
             newClock.swapMeridian();
-        else if(newClock.hour > 12)
-            newClock.hour -= 12;
+        newClock.hour -= (newClock.hour > 12)*12;
         newClock.min -= 60;
     }
 

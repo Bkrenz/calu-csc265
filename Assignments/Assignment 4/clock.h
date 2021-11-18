@@ -84,13 +84,13 @@ class Clock
     bool validateInputTime(string  input);
 
     // Operator Overloads
-    Clock operator+(const int minutes);
-    bool operator<(const Clock c2);
-    bool operator<=(const Clock c2);
-    bool operator>(const Clock c2);
-    bool operator>=(const Clock c2);
-    bool operator==(const Clock c2);
-    bool operator!=(const Clock c2);
+    friend Clock operator+(const Clock& clock, const int minutes);
+    bool operator<(const Clock& c2);
+    bool operator<=(const Clock& c2);
+    bool operator>(const Clock& c2);
+    bool operator>=(const Clock& c2);
+    bool operator==(const Clock& c2);
+    bool operator!=(const Clock& c2);
     friend ostream& operator<< (ostream& outStream, const Clock& clock);
     friend istream& operator>> (istream& outStream, Clock& clock);
 

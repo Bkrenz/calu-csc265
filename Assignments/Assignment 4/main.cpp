@@ -17,13 +17,24 @@
 
 using namespace std;
 
-string getValidInputTime();
+Clock getNewClock()
+{
+    Clock newClock;
+    do 
+    {
+        cout << "Input a valid time (eg, 12:20 pm): ";
+        cin >> newClock;    
+    } 
+    while (newClock.getFailState());
+ 
+    return newClock;
+}
 
 int main()
 {
     // Initialize values
     bool continueMenu = true;
-    int menuInput = 0;
+    int menuInput = 0, minutes = 0;
 
     // Instantiate the Clock
     Clock clock, clock2; // Initial values: 12:00 am
@@ -65,12 +76,7 @@ int main()
         switch(menuInput) 
         {
             case 1: // Set the time
-                do 
-                {
-                    cout << "Input a valid time (eg, 12:20 pm): ";
-                    cin >> clock;    
-                } 
-                while (clock.getFailState());
+                clock = getNewClock();
                 break;
 
             case 2: // Display the time
@@ -86,31 +92,45 @@ int main()
                 break;
             
             case 5: // Add minutes
-                clock.incrementMin();
+                // Get the Input Minutes
+                cout << "Input number of minutes as integer greater than 0: ";
+                while(!(cin >> minutes) || cin.peek() != '\n' && minutes > 0)
+                {
+                    cout << "Please make a selection from the menu: ";
+                    cin.clear();
+                    cin.ignore(30000, '\n');            
+                }
+                clock = clock + minutes;
                 break;
             
             case 6: // Clock < Time
-                clock.incrementMin();
+                clock2 = getNewClock();
+                cout << clock << " < " << clock2 << "? " << ((clock < clock2) ? "True" : "False") << endl;
                 break;
             
             case 7: // Clock <= Time
-                clock.incrementMin();
+                clock2 = getNewClock();
+                cout << clock << " <= " << clock2 << "? " << ((clock <= clock2) ? "True" : "False") << endl;
                 break;
             
             case 8: // Clock > Time
-                clock.incrementMin();
+                clock2 = getNewClock();
+                cout << clock << " > " << clock2 << "? " << ((clock > clock2) ? "True" : "False") << endl;
                 break;
             
             case 9: // Clock >= Time
-                clock.incrementMin();
+                clock2 = getNewClock();
+                cout << clock << " >= " << clock2 << "? " << ((clock >= clock2) ? "True" : "False") << endl;
                 break;
             
             case 10: // Clock == Time
-                clock.incrementMin();
+                clock2 = getNewClock();
+                cout << clock << " == " << clock2 << "? " << ((clock == clock2) ? "True" : "False") << endl;
                 break;
             
             case 11: // Clock != Time
-                clock.incrementMin();
+                clock2 = getNewClock();
+                cout << clock << " != " << clock2 << "? " << ((clock != clock2) ? "True" : "False") << endl;
                 break;
 
             case 12: // Quit
@@ -127,3 +147,4 @@ int main()
     return 0;
 
 }
+
