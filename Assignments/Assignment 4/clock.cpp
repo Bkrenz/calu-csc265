@@ -131,6 +131,10 @@ void Clock::swapMeridian()
 }
 
 
+/**
+ * @brief Checks if a clock is less than this clock, where a clock is considered less than
+ * if its time is earlier in the day. 
+ */
 bool Clock::operator<(const Clock& c2)
 {
   if ( this->meridian[0] < c2.getMeridian()[0] )
@@ -181,6 +185,15 @@ bool Clock::operator>(const Clock& c2)
     return !(*this <= c2);
 }
 
+/**
+ * @brief Creates a new clock, starting with a copy of the input clock,
+ * then adds an input numbers of minutes > 0 to the clock's internal
+ * minutes and adjusts the state to have a valid time.
+ * 
+ * @param clock The clock to use
+ * @param minutes The number of minutes
+ * @return Clock 
+ */
 Clock operator+(const Clock& clock, const int minutes)
 {
     Clock newClock;
@@ -201,6 +214,14 @@ Clock operator+(const Clock& clock, const int minutes)
     return newClock;
 }
 
+/**
+ * @brief Outputs the clock's state using the format "12:59 pm" to the
+ * cout stream
+ * 
+ * @param out output stream
+ * @param clock the clock to output
+ * @return ostream& output stream
+ */
 ostream& operator<<(ostream& out, const Clock& clock)
 {
     cout << setfill('0');
@@ -208,6 +229,15 @@ ostream& operator<<(ostream& out, const Clock& clock)
     return out;
 } 
 
+/**
+ * @brief Uses input from the user to create a valid clock if possible,
+ * using the format "12:59 pm", if fails it sets its internal fail state
+ * without creating a clock
+ * 
+ * @param in The input stream
+ * @param clock The clock to set
+ * @return istream& The input stream
+ */
 istream& operator>>(istream& in, Clock& clock)
 {
     string temp;
@@ -225,6 +255,7 @@ istream& operator>>(istream& in, Clock& clock)
     return in;
 }
 
+/* Fail State Access Members */
 void Clock::setFailState(bool val)
 {
     this->failState = val;
